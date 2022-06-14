@@ -5,28 +5,49 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    final textStyle = theme.textTheme.titleMedium!.copyWith(
+      color: AppColors.background.withOpacity(.75),
+      fontWeight: FontWeight.normal,
+    );
+
     return Container(
       color: AppColors.content,
       padding: const EdgeInsets.all(32),
       child: Column(
-        children: const [
+        children: [
           Text.rich(
             TextSpan(
               children: [
-                TextSpan(text: 'Last updated on '),
-                TextSpan(text: 'Jun 13th 2022'),
+                const TextSpan(
+                  text: 'Last updated on ',
+                ),
+                TextSpan(
+                  text: DateFormat().add_yMMM().format(DateTime.now()),
+                ),
               ],
             ),
+            style: textStyle,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text.rich(
             TextSpan(
               children: [
-                TextSpan(text: 'Website build using '),
-                WidgetSpan(child: FlutterLogo()),
-                TextSpan(text: 'Flutter'),
+                const TextSpan(
+                  text: 'Website build using ',
+                ),
+                WidgetSpan(
+                  child: FlutterLogo(
+                    size: theme.textTheme.titleMedium!.fontSize! + 4,
+                  ),
+                ),
+                const TextSpan(
+                  text: 'Flutter',
+                ),
               ],
             ),
+            style: textStyle,
           ),
         ],
       ),

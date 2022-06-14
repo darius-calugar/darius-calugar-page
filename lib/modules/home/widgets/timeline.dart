@@ -95,11 +95,13 @@ class Timeline extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   data['title'],
+                  textAlign: TextAlign.center,
                   style: theme.textTheme.titleMedium,
                 ),
                 const SizedBox(height: 4),
                 Text(
                   data['place'],
+                  textAlign: TextAlign.center,
                   style: theme.textTheme.labelMedium!.copyWith(
                     color: theme.colorScheme.secondary,
                   ),

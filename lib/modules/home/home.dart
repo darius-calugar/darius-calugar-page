@@ -1,8 +1,10 @@
 library home;
 
+import 'package:darius_calugar/modules/projects/projects.dart';
 import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_icons/simple_icons.dart';
 
 part 'routes/home_route.dart';

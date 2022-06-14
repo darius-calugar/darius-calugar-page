@@ -36,11 +36,8 @@ class HomeScreen extends StatelessWidget {
               height: 2,
             ),
           ),
-          SliverToBoxAdapter(
-            child: SizedBox.fromSize(
-              size: sectionSize,
-              child: const HomeAboutSection(),
-            ),
+          const SliverToBoxAdapter(
+            child: HomeAboutSection(),
           ),
           const SliverToBoxAdapter(
             child: Footer(),
