@@ -1,4 +1,6 @@
-part of home;
+import 'package:darius_calugar/modules/home/home.dart';
+import 'package:darius_calugar/modules/shared/shared.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,34 +15,28 @@ class HomeScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           const SliverAppBar(
+            primary: true,
             floating: true,
             elevation: 1,
             title: Toolbar(),
           ),
           SliverToBoxAdapter(
-            child: SizedBox.fromSize(
-              size: sectionSize,
-              child: const HomeDisplaySection(),
+            child: SelectionArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox.fromSize(
+                    size: sectionSize,
+                    child: const HomeDisplaySection(),
+                  ),
+                  const Divider(height: 2),
+                  const HomeProjectsSection(),
+                  const Divider(height: 2),
+                  const HomeAboutSection(),
+                  const Footer(),
+                ],
+              ),
             ),
-          ),
-          const SliverToBoxAdapter(
-            child: Divider(
-              height: 2,
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: HomeProjectsSection(),
-          ),
-          const SliverToBoxAdapter(
-            child: Divider(
-              height: 2,
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: HomeAboutSection(),
-          ),
-          const SliverToBoxAdapter(
-            child: Footer(),
           ),
         ],
       ),

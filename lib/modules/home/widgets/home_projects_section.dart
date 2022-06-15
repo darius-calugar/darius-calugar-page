@@ -1,4 +1,6 @@
-part of home;
+import 'package:darius_calugar/modules/projects/projects.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeProjectsSection extends StatelessWidget {
   const HomeProjectsSection({Key? key}) : super(key: key);

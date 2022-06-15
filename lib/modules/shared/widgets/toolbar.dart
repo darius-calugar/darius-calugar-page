@@ -1,4 +1,6 @@
-part of shared;
+import 'package:darius_calugar/modules/shared/shared.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Toolbar extends StatelessWidget {
   const Toolbar({Key? key}) : super(key: key);
@@ -6,48 +8,63 @@ class Toolbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final layout = Layout.of(context);
 
-    return Row(
-      children: [
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              GestureDetector(
+    return Container(
+      height: kToolbarHeight,
+      padding: EdgeInsets.all(8),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            right: null,
+            child: GestureDetector(
+              child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: Text(
-                    'Darius Călugăr',
+                    !layout.isPortrait ? 'Darius Călugăr' : 'D.C.',
                     style: theme.textTheme.titleLarge,
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: IntrinsicHeight(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Projects'),
-                ),
-                const VerticalDivider(),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('About'),
-                ),
-              ],
             ),
           ),
-        ),
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ElevatedButton(
+          Positioned.fill(
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Projects',
+                      style: TextStyle(
+                        fontSize: theme.textTheme.titleMedium!.fontSize!,
+                      ),
+                    ),
+                  ),
+                  const VerticalDivider(
+                    indent: 8,
+                    endIndent: 8,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'About',
+                      style: TextStyle(
+                        fontSize: theme.textTheme.titleMedium!.fontSize!,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          if (!layout.isPortrait)
+            Positioned.fill(
+              left: null,
+              child: OutlinedButton(
                 onPressed: () {},
                 child: Row(
                   children: const [
@@ -60,10 +77,9 @@ class Toolbar extends StatelessWidget {
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ],
+            ),
+        ],
+      ),
     );
   }
 }

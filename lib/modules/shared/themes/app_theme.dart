@@ -1,4 +1,5 @@
-part of shared;
+import 'package:darius_calugar/modules/shared/shared.dart';
+import 'package:flutter/material.dart';
 
 class AppTheme {
   AppTheme._();
@@ -94,5 +95,6 @@ class AppTheme {
       color: AppColors.background,
       foregroundColor: AppColors.content,
     ),
+    splashColor: AppColors.primary.withOpacity(.5),
   );
 }

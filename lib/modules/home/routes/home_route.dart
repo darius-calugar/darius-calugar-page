@@ -1,4 +1,5 @@
-part of home;
+import 'package:darius_calugar/modules/home/home.dart';
+import 'package:flutter/material.dart';
 
 class HomeRoute extends StatelessWidget {
   static const routeName = '/home';

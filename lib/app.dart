@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:darius_calugar/modules/home/home.dart';
 import 'package:darius_calugar/modules/projects/projects.dart';
 import 'package:darius_calugar/modules/shared/shared.dart';

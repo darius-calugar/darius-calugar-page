@@ -1,4 +1,6 @@
-part of home;
+import 'package:darius_calugar/modules/home/home.dart';
+import 'package:darius_calugar/modules/shared/shared.dart';
+import 'package:flutter/material.dart';
 
 class HomeAboutSection extends StatelessWidget {
   const HomeAboutSection({Key? key}) : super(key: key);
