@@ -1,5 +1,6 @@
 import 'dart:html';
 
+import 'package:darius_calugar/modules/error/routes/page_not_found_route.dart';
 import 'package:darius_calugar/modules/home/home.dart';
 import 'package:darius_calugar/modules/projects/projects.dart';
 import 'package:darius_calugar/modules/shared/shared.dart';
@@ -27,6 +28,9 @@ class _AppState extends State<App> {
         routes: {
           HomeRoute.routeName: (context) => const HomeRoute(),
         },
+        onUnknownRoute: (settings) => MaterialPageRoute(
+          builder: (context) => const PageNotFoundRoute(),
+        ),
         theme: AppTheme.themeData,
         debugShowCheckedModeBanner: false,
       ),

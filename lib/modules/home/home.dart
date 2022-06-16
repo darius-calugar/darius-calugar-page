@@ -1,10 +1,7 @@
 library home;
 
-import 'package:darius_calugar/modules/projects/projects.dart';
-import 'package:darius_calugar/modules/shared/shared.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:simple_icons/simple_icons.dart';
+export 'models/home_route_arguments.dart';
+export 'models/home_scroll_hash.dart';
 
 export 'routes/home_route.dart';
 

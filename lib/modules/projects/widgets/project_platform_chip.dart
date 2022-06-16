@@ -55,6 +55,8 @@ class ProjectPlatformChip extends StatelessWidget {
         return FontAwesomeIcons.mobileScreenButton;
       case ProjectPlatform.web:
         return FontAwesomeIcons.globe;
+      default:
+        return FontAwesomeIcons.question;
     }
   }
 
@@ -72,6 +74,8 @@ class ProjectPlatformChip extends StatelessWidget {
         return 'iOS';
       case ProjectPlatform.web:
         return 'Web';
+      default:
+        return 'Unknown';
     }
   }
 }

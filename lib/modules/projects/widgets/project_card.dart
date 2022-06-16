@@ -16,20 +16,20 @@ class ProjectCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         AspectRatio(
-          aspectRatio: 3/2,
+          aspectRatio: 4/3,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             clipBehavior: Clip.antiAlias,
             child: Stack(
               children: [
                 Positioned.fill(
-                  child: Image.network(
-                    'https://picsum.photos/id/22/500',
+                  child: Image.asset(
+                    project.thumbnail,
                     fit: BoxFit.cover,
                   ),
                 ),
                 Positioned(
-                  top: 4,
+                  bottom: 4,
                   left: 4,
                   child: Center(
                     child: Container(
@@ -38,7 +38,7 @@ class ProjectCard extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black38,
+                        color: Colors.black26,
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Row(

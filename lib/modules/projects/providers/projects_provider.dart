@@ -15,15 +15,18 @@ class ProjectsProvider extends ChangeNotifier {
         ProjectPlatform.ios,
         ProjectPlatform.web,
       ],
+      logo: 'assets/images/chess_auto_chess/logo.png',
+      thumbnail: 'assets/images/chess_auto_chess/logo.png',
+      images: [],
     ),
-    Project(
-      id: 0,
-      name: 'Super-Pong',
-      description: 'A Pong game that is super-powered.',
-      version: 'v0.6 Demo',
-      platforms: [
-        ProjectPlatform.windows,
-      ],
-    ),
+    // Project(
+    //   id: 0,
+    //   name: 'Super-Pong',
+    //   description: 'A Pong game that is super-powered.',
+    //   version: 'v0.6 Demo',
+    //   platforms: [
+    //     ProjectPlatform.windows,
+    //   ],
+    // ),
   ];
 }

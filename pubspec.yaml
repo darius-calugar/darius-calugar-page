@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   provider: ^6.0.3
   cupertino_icons: ^1.0.5
   font_awesome_flutter: ^10.1.0
@@ -25,6 +27,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/images/chess_auto_chess/
 
   fonts:  
     - family: Coda

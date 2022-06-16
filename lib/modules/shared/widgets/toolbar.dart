@@ -1,14 +1,25 @@
+import 'package:darius_calugar/modules/home/home.dart';
 import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Toolbar extends StatelessWidget {
-  const Toolbar({Key? key}) : super(key: key);
+  final Function()? onDisplayPressed;
+  final Function()? onProjectsPressed;
+  final Function()? onAboutPressed;
+
+  const Toolbar({
+    super.key,
+    this.onDisplayPressed,
+    this.onProjectsPressed,
+    this.onAboutPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final layout = Layout.of(context);
+    final route = ModalRoute.of(context);
 
     return Container(
       height: kToolbarHeight,
@@ -17,13 +28,24 @@ class Toolbar extends StatelessWidget {
         children: [
           Positioned.fill(
             right: null,
-            child: GestureDetector(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                    !layout.isPortrait ? 'Darius Călugăr' : 'D.C.',
-                    style: theme.textTheme.titleLarge,
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  onDisplayPressed?.call();
+                  if (route!.settings.name != HomeRoute.routeName) {
+                    _onGoToDisplay(context);
+                  }
+                },
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: AbsorbPointer(
+                      child: Text(
+                        !layout.isPortrait ? 'Darius Călugăr' : 'D.C.',
+                        style: theme.textTheme.titleLarge,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -36,11 +58,18 @@ class Toolbar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Projects',
-                      style: TextStyle(
-                        fontSize: theme.textTheme.titleMedium!.fontSize!,
+                    onPressed: () {
+                      onProjectsPressed?.call();
+                      if (route!.settings.name != HomeRoute.routeName) {
+                        _onGoToProjects(context);
+                      }
+                    },
+                    child: AbsorbPointer(
+                      child: Text(
+                        'Projects',
+                        style: TextStyle(
+                          fontSize: theme.textTheme.titleMedium!.fontSize!,
+                        ),
                       ),
                     ),
                   ),
@@ -49,11 +78,18 @@ class Toolbar extends StatelessWidget {
                     endIndent: 8,
                   ),
                   TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'About',
-                      style: TextStyle(
-                        fontSize: theme.textTheme.titleMedium!.fontSize!,
+                    onPressed: () {
+                      onAboutPressed?.call();
+                      if (route!.settings.name != HomeRoute.routeName) {
+                        _onGoToAbout(context);
+                      }
+                    },
+                    child: AbsorbPointer(
+                      child: Text(
+                        'About',
+                        style: TextStyle(
+                          fontSize: theme.textTheme.titleMedium!.fontSize!,
+                        ),
                       ),
                     ),
                   ),
@@ -72,12 +108,44 @@ class Toolbar extends StatelessWidget {
                     size: 16,
                   ),
                   const SizedBox(width: 8),
-                  Text(!layout.isPortrait ? 'Download CV' : 'CV'),
+                  AbsorbPointer(
+                    child: Text(!layout.isPortrait ? 'Download CV' : 'CV'),
+                  ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _onGoToDisplay(BuildContext context) {
+    Navigator.pushReplacementNamed(
+      context,
+      HomeRoute.routeName,
+      arguments: const HomeRouteArguments(
+        scrollHash: HomeScrollHash.display,
+      ),
+    );
+  }
+
+  void _onGoToProjects(BuildContext context) {
+    Navigator.pushReplacementNamed(
+      context,
+      HomeRoute.routeName,
+      arguments: const HomeRouteArguments(
+        scrollHash: HomeScrollHash.projects,
+      ),
+    );
+  }
+
+  void _onGoToAbout(BuildContext context) {
+    Navigator.pushReplacementNamed(
+      context,
+      HomeRoute.routeName,
+      arguments: const HomeRouteArguments(
+        scrollHash: HomeScrollHash.about,
       ),
     );
   }

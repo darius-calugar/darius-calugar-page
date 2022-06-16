@@ -107,9 +107,11 @@ class HomeDisplaySection extends StatelessWidget {
                             color: data['color'],
                           ),
                           const SizedBox(width: 8),
-                          Text(
-                            data['title'],
-                            style: theme.textTheme.titleMedium,
+                          AbsorbPointer(
+                            child: Text(
+                              data['title'],
+                              style: theme.textTheme.titleMedium,
+                            ),
                           ),
                         ],
                       ),
