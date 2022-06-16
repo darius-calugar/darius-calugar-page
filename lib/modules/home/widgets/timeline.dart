@@ -1,6 +1,5 @@
-import 'package:darius_calugar/modules/home/home.dart';
-import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Timeline extends StatelessWidget {
   const Timeline({Key? key}) : super(key: key);
@@ -23,13 +22,7 @@ class Timeline extends StatelessWidget {
           ),
         for (final data in <Map<String, dynamic>>[
           {
-            'title': 'Student',
-            'place': 'Tiberiu Popoviciu High-School',
-            'startDate': DateTime.now().subtract(const Duration(days: 1000)),
-            'endDate': DateTime.now(),
-          },
-          {
-            'title': 'Student',
+            'title': 'CS Student',
             'place': 'Babeș-Bolyai University',
             'startDate': DateTime.now().subtract(const Duration(days: 1000)),
             'endDate': DateTime.now(),
@@ -95,23 +88,39 @@ class Timeline extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  data['title'],
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.titleMedium,
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  data['place'],
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.labelMedium!.copyWith(
-                    color: theme.colorScheme.secondary,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Column(
+                    children: [
+                      Text(
+                        data['title'],
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.titleSmall,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        data['place'],
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.labelMedium!.copyWith(
+                          color: theme.colorScheme.secondary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Wrap(
+                        spacing: 8,
+                        children: [
+                          Text(
+                            DateFormat.yMMM().format(data['startDate']),
+                            style: theme.textTheme.labelSmall,
+                          ),
+                          Text(
+                            DateFormat.yMMM().format(data['endDate']),
+                            style: theme.textTheme.labelSmall,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '${data['startDate'].toString().split(' ').first} - ${data['endDate'].toString().split(' ').first}',
-                  style: theme.textTheme.labelMedium,
                 ),
               ],
             ),

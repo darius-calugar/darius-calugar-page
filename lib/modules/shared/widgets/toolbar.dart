@@ -12,7 +12,7 @@ class Toolbar extends StatelessWidget {
 
     return Container(
       height: kToolbarHeight,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Stack(
         children: [
           Positioned.fill(
@@ -61,23 +61,22 @@ class Toolbar extends StatelessWidget {
               ),
             ),
           ),
-          if (!layout.isPortrait)
-            Positioned.fill(
-              left: null,
-              child: OutlinedButton(
-                onPressed: () {},
-                child: Row(
-                  children: const [
-                    Icon(
-                      FontAwesomeIcons.fileArrowDown,
-                      size: 16,
-                    ),
-                    SizedBox(width: 8),
-                    Text('Download CV'),
-                  ],
-                ),
+          Positioned.fill(
+            left: null,
+            child: OutlinedButton(
+              onPressed: () {},
+              child: Row(
+                children: [
+                  const Icon(
+                    FontAwesomeIcons.fileArrowDown,
+                    size: 16,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(!layout.isPortrait ? 'Download CV' : 'CV'),
+                ],
               ),
             ),
+          ),
         ],
       ),
     );
