@@ -1,5 +1,6 @@
 import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:simple_icons/simple_icons.dart';
 
 class HomeDisplaySection extends StatelessWidget {
@@ -60,32 +61,32 @@ class HomeDisplaySection extends StatelessWidget {
             for (final data in <Map<String, dynamic>>[
               {
                 'title': 'Github',
-                'icon': SimpleIcons.github,
+                'icon': FontAwesomeIcons.github,
                 'color': const Color(0xFF181717),
               },
               {
                 'title': 'Itch.io',
-                'icon': SimpleIcons.itchdotio,
+                'icon': FontAwesomeIcons.itchIo,
                 'color': const Color(0xFFFA5C5C),
               },
               {
                 'title': 'Youtube',
-                'icon': SimpleIcons.youtube,
+                'icon': FontAwesomeIcons.youtube,
                 'color': const Color(0xFFFF0000),
               },
               {
                 'title': 'Twitter',
-                'icon': SimpleIcons.twitter,
+                'icon': FontAwesomeIcons.twitter,
                 'color': const Color(0xFF1DA1F2),
               },
               {
                 'title': 'Facebook',
-                'icon': SimpleIcons.facebook,
+                'icon': FontAwesomeIcons.facebook,
                 'color': const Color(0xFF1877F2),
               },
               {
                 'title': 'Linkedin',
-                'icon': SimpleIcons.linkedin,
+                'icon': FontAwesomeIcons.linkedin,
                 'color': const Color(0xFF0A66C2),
               },
             ])

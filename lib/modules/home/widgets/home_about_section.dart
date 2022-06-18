@@ -42,19 +42,22 @@ class HomeAboutSection extends StatelessWidget {
                       horizontal: 64,
                       vertical: 32,
                     )
-                  : layout.isSquare ? const EdgeInsets.symmetric(
-                      horizontal: 32,
-                      vertical: 16,
-                    ) : const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 16,
-                    ),
+                  : layout.isSquare
+                      ? const EdgeInsets.symmetric(
+                          horizontal: 32,
+                          vertical: 16,
+                        )
+                      : const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
                     'About Me',
+                    textAlign: layout.isPortrait ? TextAlign.center : TextAlign.start,
                     style: theme.textTheme.displaySmall,
                   ),
                   const SizedBox(height: 64),

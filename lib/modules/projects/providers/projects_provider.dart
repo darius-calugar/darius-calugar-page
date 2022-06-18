@@ -18,7 +18,15 @@ class ProjectsProvider extends ChangeNotifier {
       ],
       logo: 'assets/images/chess_auto_chess/logo.png',
       thumbnail: 'assets/images/chess_auto_chess/logo.png',
-      images: [],
+      images: [
+        'assets/images/chess_auto_chess/logo.png',
+        'assets/images/chess_auto_chess/logo.png',
+        'assets/images/chess_auto_chess/logo.png',
+        'assets/images/chess_auto_chess/logo.png',
+        'assets/images/chess_auto_chess/logo.png',
+        'assets/images/chess_auto_chess/logo.png',
+        'assets/images/chess_auto_chess/logo.png',
+      ],
     ),
   ];
 }

@@ -1,23 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 @immutable
 class ProjectPlatform {
-  // ignore: unused_field
-  final String _id;
+  final IconData icon;
+  final String name;
 
-  const ProjectPlatform._(this._id);
+  const ProjectPlatform._({
+    required this.icon,
+    required this.name,
+  });
 
-  static const ProjectPlatform windows = ProjectPlatform._('windows');
+  static const ProjectPlatform windows = ProjectPlatform._(
+    icon: FontAwesomeIcons.windows,
+    name: 'Windows',
+  );
 
-  static const ProjectPlatform linux = ProjectPlatform._('linux');
+  static const ProjectPlatform linux = ProjectPlatform._(
+    icon: FontAwesomeIcons.linux,
+    name: 'Linux',
+  );
 
-  static const ProjectPlatform macos = ProjectPlatform._('macos');
+  static const ProjectPlatform macos = ProjectPlatform._(
+    icon: FontAwesomeIcons.apple,
+    name: 'MacOS',
+  );
 
-  static const ProjectPlatform android = ProjectPlatform._('android');
+  static const ProjectPlatform android = ProjectPlatform._(
+    icon: FontAwesomeIcons.android,
+    name: 'Android',
+  );
 
-  static const ProjectPlatform ios = ProjectPlatform._('ios');
+  static const ProjectPlatform ios = ProjectPlatform._(
+    icon: FontAwesomeIcons.mobileScreenButton,
+    name: 'iOS',
+  );
 
-  static const ProjectPlatform web = ProjectPlatform._('web');
+  static const ProjectPlatform web = ProjectPlatform._(
+    icon: FontAwesomeIcons.globe,
+    name: 'Web', 
+  );
 
   static const values = [
     windows,

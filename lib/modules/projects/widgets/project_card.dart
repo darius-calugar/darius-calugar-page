@@ -14,6 +14,7 @@ class ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final layout = Layout.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -21,7 +22,7 @@ class ProjectCard extends StatelessWidget {
         AspectRatio(
           aspectRatio: 4 / 3,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: !layout.isPortrait ? BorderRadius.circular(8) : BorderRadius.zero,
             clipBehavior: Clip.antiAlias,
             child: Stack(
               children: [
@@ -78,45 +79,55 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        IntrinsicHeight(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
             children: [
-              Text(
-                project.name,
-                style: theme.textTheme.headlineLarge,
-              ),
-              const VerticalDivider(
-                width: 32,
-              ),
-              Text(
-                project.version,
-                style: theme.textTheme.headlineMedium!.copyWith(
-                  color: theme.colorScheme.onBackground.withOpacity(.5),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        project.name,
+                        style: theme.textTheme.headlineLarge,
+                      ),
+                      const VerticalDivider(
+                        width: 32,
+                      ),
+                      Text(
+                        project.version,
+                        style: theme.textTheme.headlineMedium!.copyWith(
+                          color: theme.colorScheme.onBackground.withOpacity(.5),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                child: Text(
+                  project.description,
+                  textAlign: TextAlign.center,
+                  style: !layout.isPortrait ? theme.textTheme.titleMedium : theme.textTheme.titleSmall,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  for (final projectPlatform in project.platforms)
+                    ProjectPlatformChip(
+                      projectPlatform: projectPlatform,
+                    ),
+                ],
               ),
             ],
           ),
-        ),
-        const SizedBox(height: 8),
-        SizedBox(
-          child: Text(
-            project.description,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.titleMedium,
-          ),
-        ),
-        const SizedBox(height: 16),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            for (final projectPlatform in project.platforms)
-              ProjectPlatformChip(
-                projectPlatform: projectPlatform,
-              ),
-          ],
         ),
       ],
     );

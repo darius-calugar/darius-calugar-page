@@ -1,4 +1,5 @@
 import 'package:darius_calugar/modules/projects/projects.dart';
+import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,19 +11,21 @@ class HomeProjectsSection extends StatelessWidget {
     final projectsProvider = Provider.of<ProjectsProvider>(context);
 
     final theme = Theme.of(context);
+    final layout = Layout.of(context);
 
     return Column(
       children: [
         const SizedBox(height: 64),
         Text(
           'Personal Projects',
+          textAlign: TextAlign.center,
           style: theme.textTheme.displaySmall,
         ),
         const SizedBox(height: 86),
         for (final project in projectsProvider.projects) ...[
           if (projectsProvider.projects.first != project) const SizedBox(height: 128),
           SizedBox(
-            width: 600,
+            width: !layout.isPortrait ? 600 : null,
             child: ProjectCard(
               project: project,
             ),
