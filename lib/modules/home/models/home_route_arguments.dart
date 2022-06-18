@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 @immutable
 class HomeRouteArguments {
-  final HomeScrollHash scrollHash;
+  final HomeSection scrollHash;
 
   const HomeRouteArguments({
     required this.scrollHash,

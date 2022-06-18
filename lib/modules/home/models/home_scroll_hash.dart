@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 @immutable
-class HomeScrollHash {
+class HomeSection {
   // ignore: unused_field
   final String? _hash;
 
-  const HomeScrollHash._(this._hash);
+  const HomeSection._(this._hash);
 
-  static const HomeScrollHash display = HomeScrollHash._('display');
+  static const HomeSection display = HomeSection._('display');
 
-  static const HomeScrollHash projects = HomeScrollHash._('projects');
+  static const HomeSection projects = HomeSection._('projects');
 
-  static const HomeScrollHash about = HomeScrollHash._('about');
+  static const HomeSection about = HomeSection._('about');
 
-  static List<HomeScrollHash> get values => [
+  static List<HomeSection> get values => [
         display,
         projects,
         about,

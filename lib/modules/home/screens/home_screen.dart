@@ -3,12 +3,14 @@ import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  final HomeScrollHash scrollHash;
+  static const routeName = '/';
+
+  final HomeSection section;
 
   const HomeScreen({
     Key? key,
-    HomeScrollHash? scrollHash,
-  })  : scrollHash = scrollHash ?? HomeScrollHash.display,
+    HomeSection? section,
+  })  : section = section ?? HomeSection.display,
         super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      scrollToHash(widget.scrollHash);
+      scrollToHash(widget.section);
     });
   }
 
@@ -38,10 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SelectionArea(
         child: FractionallySizedBox(
           heightFactor: 1,
-          child: Stack(
+          child: Column(
             children: [
-              Positioned.fill(
-                top: kToolbarHeight,
+              Toolbar(
+                onDisplayPressed: () => scrollToHash(HomeSection.display),
+                onProjectsPressed: () => scrollToHash(HomeSection.projects),
+                onAboutPressed: () => scrollToHash(HomeSection.about),
+              ),
+              Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -65,14 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Material(
-                elevation: 1,
-                child: Toolbar(
-                  onDisplayPressed: () => scrollToHash(HomeScrollHash.display),
-                  onProjectsPressed: () => scrollToHash(HomeScrollHash.projects),
-                  onAboutPressed: () => scrollToHash(HomeScrollHash.about),
-                ),
-              ),
             ],
           ),
         ),
@@ -80,16 +78,16 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void scrollToHash(HomeScrollHash scrollHash) {
+  void scrollToHash(HomeSection scrollHash) {
     GlobalKey sectionKey;
     switch (scrollHash) {
-      case HomeScrollHash.display:
+      case HomeSection.display:
         sectionKey = _displaySectionKey;
         break;
-      case HomeScrollHash.about:
+      case HomeSection.about:
         sectionKey = _aboutSectionKey;
         break;
-      case HomeScrollHash.projects:
+      case HomeSection.projects:
         sectionKey = _projectsSectionKey;
         break;
       default:

@@ -1,5 +1,5 @@
-import 'package:darius_calugar/modules/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PageNotFoundScreen extends StatelessWidget {
   const PageNotFoundScreen({super.key});
@@ -23,7 +23,7 @@ class PageNotFoundScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: () => Navigator.pushReplacementNamed(context, HomeRoute.routeName),
+              onPressed: () => GoRouter.of(context).go('/'),
               child: const Text('Take me home'),
             ),
           ],

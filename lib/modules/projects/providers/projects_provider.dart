@@ -1,4 +1,5 @@
-part of projects;
+import 'package:darius_calugar/modules/projects/projects.dart';
+import 'package:flutter/material.dart';
 
 class ProjectsProvider extends ChangeNotifier {
   final projects = const [
@@ -19,14 +20,5 @@ class ProjectsProvider extends ChangeNotifier {
       thumbnail: 'assets/images/chess_auto_chess/logo.png',
       images: [],
     ),
-    // Project(
-    //   id: 0,
-    //   name: 'Super-Pong',
-    //   description: 'A Pong game that is super-powered.',
-    //   version: 'v0.6 Demo',
-    //   platforms: [
-    //     ProjectPlatform.windows,
-    //   ],
-    // ),
   ];
 }

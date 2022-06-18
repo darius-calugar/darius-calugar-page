@@ -1,4 +1,7 @@
-part of projects;
+import 'package:darius_calugar/modules/projects/projects.dart';
+import 'package:darius_calugar/modules/shared/shared.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProjectCard extends StatelessWidget {
   final Project project;
@@ -16,7 +19,7 @@ class ProjectCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         AspectRatio(
-          aspectRatio: 4/3,
+          aspectRatio: 4 / 3,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             clipBehavior: Clip.antiAlias,
@@ -66,7 +69,7 @@ class ProjectCard extends StatelessWidget {
                   child: Material(
                     color: AppColors.transparent,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () => GoRouter.of(context).go('/project/${project.id}'),
                     ),
                   ),
                 ),

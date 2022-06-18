@@ -1,4 +1,4 @@
-part of projects;
+import 'package:flutter/material.dart';
 
 @immutable
 class ProjectPlatform {

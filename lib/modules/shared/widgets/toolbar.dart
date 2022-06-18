@@ -1,7 +1,7 @@
-import 'package:darius_calugar/modules/home/home.dart';
 import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class Toolbar extends StatelessWidget {
   final Function()? onDisplayPressed;
@@ -19,11 +19,18 @@ class Toolbar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final layout = Layout.of(context);
-    final route = ModalRoute.of(context);
 
     return Container(
       height: kToolbarHeight,
       padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: theme.dividerColor,
+            width: 1,
+          ),
+        ),
+      ),
       child: Stack(
         children: [
           Positioned.fill(
@@ -33,9 +40,7 @@ class Toolbar extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   onDisplayPressed?.call();
-                  if (route!.settings.name != HomeRoute.routeName) {
-                    _onGoToDisplay(context);
-                  }
+                  GoRouter.of(context).go('/?section=display');
                 },
                 child: Center(
                   child: Padding(
@@ -60,9 +65,7 @@ class Toolbar extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       onProjectsPressed?.call();
-                      if (route!.settings.name != HomeRoute.routeName) {
-                        _onGoToProjects(context);
-                      }
+                      GoRouter.of(context).go('/?section=projects');
                     },
                     child: AbsorbPointer(
                       child: Text(
@@ -80,9 +83,7 @@ class Toolbar extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       onAboutPressed?.call();
-                      if (route!.settings.name != HomeRoute.routeName) {
-                        _onGoToAbout(context);
-                      }
+                      GoRouter.of(context).go('/?section=about');
                     },
                     child: AbsorbPointer(
                       child: Text(
@@ -116,36 +117,6 @@ class Toolbar extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  void _onGoToDisplay(BuildContext context) {
-    Navigator.pushReplacementNamed(
-      context,
-      HomeRoute.routeName,
-      arguments: const HomeRouteArguments(
-        scrollHash: HomeScrollHash.display,
-      ),
-    );
-  }
-
-  void _onGoToProjects(BuildContext context) {
-    Navigator.pushReplacementNamed(
-      context,
-      HomeRoute.routeName,
-      arguments: const HomeRouteArguments(
-        scrollHash: HomeScrollHash.projects,
-      ),
-    );
-  }
-
-  void _onGoToAbout(BuildContext context) {
-    Navigator.pushReplacementNamed(
-      context,
-      HomeRoute.routeName,
-      arguments: const HomeRouteArguments(
-        scrollHash: HomeScrollHash.about,
       ),
     );
   }
