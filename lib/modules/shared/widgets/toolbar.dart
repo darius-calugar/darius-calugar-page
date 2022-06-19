@@ -1,4 +1,5 @@
 import 'package:darius_calugar/modules/shared/shared.dart';
+import 'package:darius_calugar/modules/shared/utils/http_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -101,7 +102,9 @@ class Toolbar extends StatelessWidget {
           Positioned.fill(
             left: null,
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                downloadFile('https://github.com/darius-calugar.github.io/meta/cv.pdf');
+              },
               child: Row(
                 children: [
                   const Icon(

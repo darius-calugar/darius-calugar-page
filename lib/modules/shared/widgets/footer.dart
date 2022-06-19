@@ -1,6 +1,5 @@
 import 'package:darius_calugar/modules/shared/shared.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Footer extends StatelessWidget {
@@ -19,20 +18,6 @@ class Footer extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text.rich(
-              textAlign: TextAlign.center,
-              TextSpan(
-                children: [
-                  const TextSpan(
-                    text: 'Last updated on ',
-                  ),
-                  TextSpan(
-                    text: DateFormat.yMd().format(DateTime.now()),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
             Text.rich(
               textAlign: TextAlign.center,
               TextSpan(

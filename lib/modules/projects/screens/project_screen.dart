@@ -1,8 +1,11 @@
+import 'package:darius_calugar/modules/projects/models/project_direct_source.dart';
 import 'package:darius_calugar/modules/projects/projects.dart';
 import 'package:darius_calugar/modules/projects/widgets/project_image_carousel.dart';
 import 'package:darius_calugar/modules/projects/widgets/project_platform_card.dart';
 import 'package:darius_calugar/modules/shared/shared.dart';
+import 'package:darius_calugar/modules/shared/utils/http_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ProjectScreen extends StatelessWidget {
   final Project project;
@@ -106,64 +109,74 @@ class ProjectScreen extends StatelessWidget {
                         spacing: 32,
                         runSpacing: 32,
                         children: [
-                          ProjectPlatformCard(
-                            platform: ProjectPlatform.windows,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Download (.msi)'),
+                          for (final platform in project.platforms)
+                            if (project.directSources.any((s) => s.platform == platform))
+                              ProjectPlatformCard(
+                                platform: platform,
+                                children: [
+                                  for (final source in project.directSources.where((s) => s.platform == platform))
+                                    ElevatedButton(
+                                      onPressed: source.available
+                                          ? () {
+                                              switch (source.type) {
+                                                case ProjectDirectSourceType.navigate:
+                                                  launchUrlString(source.url);
+                                                  break;
+                                                case ProjectDirectSourceType.download:
+                                                  downloadFile(source.url);
+                                                  break;
+                                              }
+                                            }
+                                          : null,
+                                      child: AbsorbPointer(
+                                        child: Text(
+                                          source.available ? source.label : 'Unavailable',
+                                        ),
+                                      ),
+                                    ),
+                                ],
                               ),
-                            ],
-                          ),
-                          ProjectPlatformCard(
-                            platform: ProjectPlatform.linux,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Download (.deb)'),
-                              ),
-                            ],
-                          ),
-                          ProjectPlatformCard(
-                            platform: ProjectPlatform.macos,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Download (.pkg)'),
-                              ),
-                            ],
-                          ),
-                          ProjectPlatformCard(
-                            platform: ProjectPlatform.android,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Download (.apk)'),
-                              ),
-                            ],
-                          ),
-                          ProjectPlatformCard(
-                            platform: ProjectPlatform.ios,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Download (.ipa)'),
-                              ),
-                            ],
-                          ),
-                          ProjectPlatformCard(
-                            platform: ProjectPlatform.web,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Go to web app'),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 32),
+                    if (project.feedbackUrl != null) ...[
+                      const Divider(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 32,
+                          horizontal: 16,
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Feedback',
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.displaySmall,
+                            ),
+                            const SizedBox(height: 32),
+                            Text(
+                              'Please provide feedback about this project.',
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.headlineSmall,
+                            ),
+                            const SizedBox(height: 24),
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                minimumSize: MaterialStateProperty.all(const Size.fromRadius(24)),
+                                textStyle: MaterialStateProperty.all(theme.textTheme.titleMedium),
+                              ),
+                              onPressed: () {
+                                launchUrlString(project.feedbackUrl!);
+                              },
+                              child: const AbsorbPointer(
+                                child: Text('Leave feedback'),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                     const Footer(),
                   ],
                 ),

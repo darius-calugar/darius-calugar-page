@@ -57,7 +57,7 @@ class _ProjectImageCarouselState extends State<ProjectImageCarousel> {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   color: theme.colorScheme.surface.withOpacity(.5),
                   border: Border(
@@ -140,7 +140,6 @@ class _ProjectImageCarouselState extends State<ProjectImageCarousel> {
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeOut,
                     ),
-                    iconSize: 32,
                     padding: const EdgeInsets.all(16),
                     icon: const Icon(
                       FontAwesomeIcons.chevronRight,
