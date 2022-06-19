@@ -43,7 +43,7 @@ class _ProjectImageCarouselState extends State<ProjectImageCarousel> {
               controller: _controller,
               children: [
                 for (final image in widget.images)
-                  Image.network(
+                  Image.asset(
                     image,
                     fit: BoxFit.contain,
                   ),

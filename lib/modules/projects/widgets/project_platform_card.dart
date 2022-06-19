@@ -51,7 +51,13 @@ class ProjectPlatformCard extends StatelessWidget {
           ElevatedButtonTheme(
             data: ElevatedButtonThemeData(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(theme.colorScheme.secondary),
+                backgroundColor: MaterialStateProperty.resolveWith((states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return theme.colorScheme.secondary.withOpacity(.25);
+                  } else {
+                    return theme.colorScheme.secondary;
+                  }
+                }),
                 foregroundColor: MaterialStateProperty.all(theme.colorScheme.onSecondary),
                 textStyle: MaterialStateProperty.all(theme.textTheme.titleMedium),
                 minimumSize: MaterialStateProperty.all(const Size.fromRadius(24)),

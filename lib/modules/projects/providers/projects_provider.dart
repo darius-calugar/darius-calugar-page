@@ -7,7 +7,10 @@ class ProjectsProvider extends ChangeNotifier {
     Project(
       id: 0,
       name: 'Chess: Auto-Chess',
-      description: 'A chess game that automatically plays itself against a computer.',
+      description:
+          'A casual strategy game in which the player must defend the king from increasingly dangerous waves of enemies. '
+          'Usual chess rules do not apply, as player pieces cannot move and attack all enemies in range. '
+          'Pieces apply exotic effects that can help allies or impair enemies.',
       version: 'v0.1 Alpha',
       platforms: [
         ProjectPlatform.windows,
@@ -18,15 +21,10 @@ class ProjectsProvider extends ChangeNotifier {
         ProjectPlatform.web,
       ],
       logo: 'assets/images/chess_auto_chess/logo.png',
-      thumbnail: 'assets/images/chess_auto_chess/logo.png',
+      thumbnail: 'assets/images/chess_auto_chess/image_1.png',
       images: [
-        'assets/images/chess_auto_chess/logo.png',
-        'assets/images/chess_auto_chess/logo.png',
-        'assets/images/chess_auto_chess/logo.png',
-        'assets/images/chess_auto_chess/logo.png',
-        'assets/images/chess_auto_chess/logo.png',
-        'assets/images/chess_auto_chess/logo.png',
-        'assets/images/chess_auto_chess/logo.png',
+        'assets/images/chess_auto_chess/image_1.png',
+        'assets/images/chess_auto_chess/image_2.png',
       ],
       directSources: [
         ProjectDirectSource(
@@ -67,7 +65,8 @@ class ProjectsProvider extends ChangeNotifier {
           type: ProjectDirectSourceType.navigate,
         ),
       ],
-      feedbackUrl: 'https://example.com',
+      feedbackUrl:
+          'https://docs.google.com/forms/d/e/1FAIpQLScYGW92Ik7JLAENmZuKwFunkgq_fNoc1SZmTkNJDBFHTbDWrQ/viewform?usp=sf_link',
     ),
   ];
 }

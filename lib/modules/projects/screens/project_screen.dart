@@ -38,7 +38,7 @@ class ProjectScreen extends StatelessWidget {
                               ? 1
                               : layout.isSquare
                                   ? 4 / 3
-                                  : 16 / 9,
+                                  : 16 / 10,
                           child: Column(
                             children: [
                               const SizedBox(height: 32),
@@ -156,7 +156,7 @@ class ProjectScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 32),
                             Text(
-                              'Please provide feedback about this project.',
+                              'Your opinion is important. Please take time to leave feedback on the project.',
                               textAlign: TextAlign.center,
                               style: theme.textTheme.headlineSmall,
                             ),
@@ -170,7 +170,7 @@ class ProjectScreen extends StatelessWidget {
                                 launchUrlString(project.feedbackUrl!);
                               },
                               child: const AbsorbPointer(
-                                child: Text('Leave feedback'),
+                                child: Text('Go to feedback form'),
                               ),
                             ),
                           ],

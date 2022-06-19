@@ -20,7 +20,7 @@ class ProjectCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         AspectRatio(
-          aspectRatio: 4 / 3,
+          aspectRatio: 16 / 9,
           child: ClipRRect(
             borderRadius: !layout.isPortrait ? BorderRadius.circular(8) : BorderRadius.zero,
             clipBehavior: Clip.antiAlias,

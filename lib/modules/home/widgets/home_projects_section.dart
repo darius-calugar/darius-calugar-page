@@ -24,8 +24,9 @@ class HomeProjectsSection extends StatelessWidget {
         const SizedBox(height: 86),
         for (final project in projectsProvider.projects) ...[
           if (projectsProvider.projects.first != project) const SizedBox(height: 128),
-          SizedBox(
-            width: !layout.isPortrait ? 600 : null,
+          Container(
+            margin: !layout.isPortrait ? const EdgeInsets.symmetric(horizontal: 32) : EdgeInsets.zero,
+            width: !layout.isPortrait ? 800 : null,
             child: ProjectCard(
               project: project,
             ),

@@ -103,7 +103,7 @@ class Toolbar extends StatelessWidget {
             left: null,
             child: OutlinedButton(
               onPressed: () {
-                downloadFile('https://github.com/darius-calugar.github.io/meta/cv.pdf');
+                downloadFile('https://darius-calugar.github.io/meta/cv.pdf');
               },
               child: Row(
                 children: [
